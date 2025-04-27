@@ -2,20 +2,232 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+h1.ce-header {
+  @apply text-3xl font-bold;
+}
+h2.ce-header {
+  @apply text-2xl font-semibold;
+}
+h3.ce-header {
+  @apply text-xl font-semibold;
+}
+h4.ce-header {
+  @apply text-lg font-semibold;
+}
+h5.ce-header {
+  @apply text-base font-semibold;
+}
+h6.ce-header {
+  @apply text-base font-semibold;
+}
+textarea.ce-rawtool__textarea {
+  @apply text-base h-[340px];
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+div.ce-popover__container {
+  @apply bg-gray-800 border-none p-1;
+}
+
+div.ce-popover-item {
+  @apply text-slate-300;
+  &:hover {
+    @apply text-slate-200 bg-gray-900 !important;
   }
 }
 
+div.ce-toolbar__plus {
+  @apply text-slate-300;
+  &:hover {
+    @apply text-slate-200 bg-gray-900 !important;
+  }
+}
+
+span.ce-toolbar__settings-btn {
+  @apply text-slate-300;
+  &:hover {
+    @apply text-slate-200 bg-gray-900 !important;
+  }
+}
+
+span.cdx-list__checkbox-check {
+  @apply text-slate-300 bg-gray-800;
+}
+
+button.ce-inline-tool {
+  @apply text-slate-300;
+  &:hover {
+    @apply text-slate-200 bg-gray-900 !important;
+  }
+}
+
+button.ce-popover-item {
+  @apply text-slate-300;
+  &:hover {
+    @apply text-slate-200 bg-gray-900 !important;
+  }
+}
+
+.custom-styles .excalidraw {
+  --theme-filter: invert(93%) hue-rotate(180deg);
+  --button-destructive-bg-color: #5a0000;
+  --button-destructive-color: #{$oc-red-3};
+
+  --button-gray-1: #363636;
+  --button-gray-2: #272727;
+  --button-gray-3: #222;
+  --button-special-active-bg-color: #204624;
+  --dialog-border-color: var(--color-gray-80);
+  --dropdown-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="292.4" height="292.4" viewBox="0 0 292 292"><path fill="%23ced4da" d="M287 197L159 69c-4-3-8-5-13-5s-9 2-13 5L5 197c-3 4-5 8-5 13s2 9 5 13c4 4 8 5 13 5h256c5 0 9-1 13-5s5-8 5-13-1-9-5-13z"/></svg>');
+  --focus-highlight-color: #{$oc-blue-6};
+  --icon-green-fill-color: #{$oc-green-4};
+  --default-bg-color: #121212;
+  --input-bg-color: #121212;
+  --input-border-color: #2e2e2e;
+  --input-hover-bg-color: #181818;
+  --input-label-color: #{$oc-gray-2};
+  --island-bg-color: #232329;
+  --keybinding-color: var(--color-gray-60);
+  --link-color: #{$oc-blue-4};
+  --overlay-bg-color: #{transparentize($oc-gray-8, 0.88)};
+  --popup-secondary-bg-color: #222;
+  --popup-text-color: #{$oc-gray-4};
+  --popup-text-inverted-color: #2c2c2c;
+  --select-highlight-color: #{$oc-blue-4};
+  --shadow-island: 0px 0px 0.9310142993927002px 0px rgba(0, 0, 0, 0.17),
+    0px 0px 3.1270833015441895px 0px rgba(0, 0, 0, 0.08),
+    0px 7px 14px 0px rgba(0, 0, 0, 0.05);
+
+  --modal-shadow: 0px 100px 80px rgba(0, 0, 0, 0.07),
+    0px 41.7776px 33.4221px rgba(0, 0, 0, 0.0503198),
+    0px 22.3363px 17.869px rgba(0, 0, 0, 0.0417275),
+    0px 12.5216px 10.0172px rgba(0, 0, 0, 0.035),
+    0px 6.6501px 5.32008px rgba(0, 0, 0, 0.0282725),
+    0px 2.76726px 2.21381px rgba(0, 0, 0, 0.0196802);
+  --avatar-border-color: var(--color-gray-85);
+
+  --scrollbar-thumb: #{$oc-gray-8};
+  --scrollbar-thumb-hover: #{$oc-gray-7};
+
+  --color-slider-track: hsl(244, 23%, 39%);
+  --color-selection: #3530c4;
+
+  --color-icon-white: var(--color-gray-90);
+
+  --color-primary: #fcc6d9;
+  --color-primary-darker: #f783ac;
+  --color-primary-darkest: #e64980;
+  --color-primary-light: #f2a9c4;
+  --color-primary-light-darker: #43415e;
+  --color-primary-hover: #bbb8ff;
+
+  --color-disabled: var(--color-gray-70);
+
+  --color-text-warning: var(--color-gray-80);
+
+  --color-danger: #ffa8a5;
+  --color-danger-dark: #672120;
+  --color-danger-darker: #8f2625;
+  --color-danger-darkest: #ac2b29;
+  --color-danger-text: #fbcbcc;
+
+  --color-danger-background: #fbcbcc;
+  --color-danger-icon-background: #672120;
+  --color-danger-color: #261919;
+  --color-danger-icon-color: #fbcbcc;
+
+  --color-warning-background: var(--color-warning);
+  --color-warning-icon-background: var(--color-warning-dark);
+  --color-warning-color: var(--color-gray-80);
+  --color-warning-icon-color: var(--color-gray-80);
+
+  --color-muted: var(--color-gray-80);
+  --color-muted-darker: var(--color-gray-60);
+  --color-muted-darkest: var(--color-gray-20);
+  --color-muted-background: var(--color-gray-40);
+  --color-muted-background-darker: var(--color-gray-20);
+
+  --color-logo-text: #e2dfff;
+
+  --color-surface-high: #2e2d39;
+  --color-surface-low: hsl(240, 8%, 15%);
+  --color-surface-mid: hsl(240 6% 10%);
+  --color-surface-lowest: hsl(0, 0%, 7%);
+  --color-on-surface: #e3e3e8;
+  --color-brand-hover: #bbb8ff;
+  --color-on-primary-container: #e0dfff;
+  --color-surface-primary-container: #403e6a;
+  --color-brand-active: #d0ccff;
+  --color-border-outline: #8e8d9c;
+  --color-border-outline-variant: #46464f;
+  --color-surface-primary-container: #403e6a;
+}
+
+
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
