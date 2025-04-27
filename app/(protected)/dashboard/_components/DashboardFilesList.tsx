@@ -65,7 +65,7 @@ function DashboardFilesList() {
     const [isEditFileDialogOpen, setIsEditFileDialogOpen] = useState(false);
     const [currentFile, setCurrentFile] = useState<FILE | null>(null);
 
-    const getAllFiles = async () => {
+    const getAllFiles = useCallback(async () => {
         let files = [];
         if (user && user?.email) {
             setIsFetchingFiles(true);
@@ -82,7 +82,7 @@ function DashboardFilesList() {
             }
         }
         setFiles(files);
-    }
+    }, [user, convex, isArchive]);
 
     const handleEditFileDialogClose = () => {
         setIsEditFileDialogOpen(false);
