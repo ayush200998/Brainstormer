@@ -68,7 +68,7 @@ function Editor({ fileId, fileDetails }: { fileId: any, fileDetails: any }) {
     try {
       // Get file data
       const fileData = await getFile(fileId, convex);
-      const editorData = JSON.parse(fileData.document);
+      const editorData = fileData?.document ? JSON.parse(fileData.document) : {};
       console.log('[Editor] Creating new editor instance with data:', editorData);
       
       // Create new instance
