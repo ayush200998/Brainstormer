@@ -88,11 +88,11 @@ div.link-tool__title {
   @apply text-slate-200 !important;
 }
 
-div.link-tool__description {
+p.link-tool__description {
   @apply text-slate-300 !important;
 }
 
-div.link-tool__anchor {
+span.link-tool__anchor {
   @apply text-gray-400 !important;
 }
 
