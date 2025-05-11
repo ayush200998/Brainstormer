@@ -171,18 +171,18 @@ function DashboardFilesList() {
                                     handleSingleFileClick(file);
                                 }}
                             >
-                                <TableCell className="whitespace-nowrap px-4 py-2 font-medium text-amber-100">
+                                <TableCell className="whitespace-nowrap px-4 py-2 font-medium">
                                     {file.fileName}
                                 </TableCell>
-                                <TableCell className="whitespace-nowrap px-4 py-2 text-amber-100">
+                                <TableCell className="whitespace-nowrap px-4 py-2 ">
                                     {dayjs(file._creationTime).format('DD MMMM YYYY')}
                                 </TableCell>
 
-                                <TableCell className="whitespace-nowrap px-4 py-2 text-amber-100">
+                                <TableCell className="whitespace-nowrap px-4 py-2 ">
                                     {dayjs(file._creationTime).format('DD MMMM YYYY')}
                                 </TableCell>
 
-                                <TableCell className="whitespace-nowrap px-4 py-2 text-amber-100">
+                                <TableCell className="whitespace-nowrap px-4 py-2 ">
                                     {user && user?.picture && (
                                         <Image
                                             src={user.picture}
@@ -193,12 +193,12 @@ function DashboardFilesList() {
                                         />
                                     )}
                                 </TableCell>
-                                <TableCell className="whitespace-nowrap px-4 py-2 text-amber-100">
+                                <TableCell className="whitespace-nowrap px-4 py-2 ">
                                     <DropdownMenu>
                                         <DropdownMenuTrigger>
                                             <MoreHorizontal />
                                         </DropdownMenuTrigger>
-                                        <DropdownMenuContent className='bg-gray-900 text-sm text-amber-100 border-none'>
+                                        <DropdownMenuContent className='bg-gray-900 text-sm border-none text-white'>
                                             <DropdownMenuItem
                                                 className='cursor-pointer   flex items-center gap-2 p-2'
                                                 onClick={(e) => {
@@ -235,8 +235,8 @@ function DashboardFilesList() {
                 <div
                     className='h-screen w-full flex flex-col justify-center items-center gap-4'
                 >
-                    <FileX className="h-16 w-16 text-amber-100/60" />
-                    <p className='text-amber-100'>
+                    <FileX className="h-16 w-16" />
+                    <p className=''>
                         {isArchive ? (
                             'Looks like you don\'t have any archived files.'
                         ) : (
@@ -246,8 +246,6 @@ function DashboardFilesList() {
 
                     {isArchive && (
                         <Button
-                            variant='outline'
-                            className='bg-amber-100 text-black'
                             onClick={() => router.push('/dashboard')}
                         >
                             Go to dashboard

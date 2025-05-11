@@ -67,6 +67,19 @@ button.ce-popover-item {
   }
 }
 
+div.link-tool__input {
+  @apply bg-gray-800 text-slate-200 border-none !important;
+  &:hover {
+    @apply bg-gray-900;
+  }
+  &:focus {
+    @apply bg-gray-900;
+  }
+}
+div.cdx-alert-info {
+  @apply bg-blue-900 text-blue-100;
+}
+
 .custom-styles .excalidraw {
   --theme-filter: invert(93%) hue-rotate(180deg);
   --button-destructive-bg-color: #5a0000;

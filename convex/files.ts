@@ -33,10 +33,18 @@ export const getFile = query({
 export const getFileByFileName = query({
     args: { fileName: v.string() },
     handler: async (ctx, args) => {
-        const files = await ctx.db
+        const searchTerm = args.fileName.toLowerCase();
+        
+        // Get all files first
+        const allFiles = await ctx.db
             .query("files")
-            .filter((q) => q.eq(q.field("fileName"), args.fileName))
             .collect();
+        
+        // Filter in memory for case-insensitive substring match
+        const files = allFiles.filter(file => 
+            file.fileName.toLowerCase().includes(searchTerm)
+        );
+        
         return files;
     },
 });

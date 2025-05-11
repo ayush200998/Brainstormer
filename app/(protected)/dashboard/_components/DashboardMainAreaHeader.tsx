@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Search } from 'lucide-react'
 import { Input } from '@/components/ui/input'
 import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
@@ -6,15 +6,39 @@ import Image from 'next/image';
 import { useConvex } from 'convex/react';
 import { getFileByFileName } from '../../workspace/utils/file_utils';
 import { useDashboardFileList } from '@/app/_context/DashboardFileListContext';
+import { usePathname } from 'next/navigation';
+import { api } from '@/convex/_generated/api';
 
 function DashboardMainAreaHeader() {
     const { user } = useKindeBrowserClient();
     const convex = useConvex();
+    const pathname = usePathname();
     const [searchQuery, setSearchQuery] = useState('');
-
     const {
+        files,
+        isFetchingFiles,
         setFiles,
+        setIsFetchingFiles,
     } = useDashboardFileList();
+
+    const isArchive = pathname === '/archive' || pathname.startsWith('/archive/');
+
+    const getAllFiles = useCallback(async () => {
+        let files = [];
+        if (user && user?.email) {
+            setIsFetchingFiles(true);
+            console.log('Fetching all files');
+            try{
+                files = await convex.query(api.files.getUserFiles, {
+                    createdBy: user?.email,
+                    archive: isArchive,
+                });
+            } catch (error) {
+                console.error('Error fetching files:', error);
+            }
+        }
+        setFiles(files);
+    }, [user, convex, isArchive]);
 
     const handleSearch = async () => {
         try {
@@ -30,6 +54,8 @@ function DashboardMainAreaHeader() {
         const debounceTimeout = setTimeout(() => {
             if (searchQuery) {
                 handleSearch();
+            } else {
+                getAllFiles()
             }
         }, 500);
 

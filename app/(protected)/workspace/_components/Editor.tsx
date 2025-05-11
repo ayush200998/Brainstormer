@@ -2,14 +2,20 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import EditorJS from '@editorjs/editorjs';
+import Alert from 'editorjs-alert';
+import ColorPicker from 'editorjs-color-picker';
+import Delimiter from '@editorjs/delimiter';
 import Embed from '@editorjs/embed';
 import Header from '@editorjs/header';
-import LinkTool from '@editorjs/list';
+import LinkTool from '@editorjs/link';
+import List from '@editorjs/list';
+import NestedChecklist from '@calumk/editorjs-nested-checklist';
 import Paragraph from '@editorjs/paragraph';
 import Quote from '@editorjs/quote';
 import RawTool from '@editorjs/raw';
 import SimpleImage from "@editorjs/simple-image";
-import List from '@editorjs/list';
+import Table from '@editorjs/table';
+import Warning from '@editorjs/warning';
 import type { ToolConstructable } from '@editorjs/editorjs';
 import type { LogLevels } from '@editorjs/editorjs';
 import { useConvex } from 'convex/react';
@@ -79,19 +85,51 @@ function Editor({ fileId, fileDetails }: { fileId: any, fileDetails: any }) {
         inlineToolbar: true,
         data: editorData,
         tools: {
+          alert: {
+            class: Alert as unknown as ToolConstructable,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+A',
+          },
+          colorPicker: {
+            class: ColorPicker as unknown as ToolConstructable,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+P',
+          },
+          delimiter: {
+            class: Delimiter as unknown as ToolConstructable,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+D',
+          },
+          embed: {
+            class: Embed as unknown as ToolConstructable,
+            shortcut: 'CMD+SHIFT+E',
+          },
           header: {
             class: Header as unknown as ToolConstructable,
             inlineToolbar: true,
             shortcut: 'CMD+SHIFT+H',
+          },
+          link: {
+            class: LinkTool as unknown as ToolConstructable,
+            config: {
+              endpoint: '/api/link-metadata'
+            },
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+K',
           },
           list: {
             class: List as unknown as ToolConstructable,
             inlineToolbar: true,
             shortcut: 'CMD+SHIFT+L',
           },
-          embed: {
-            class: Embed as unknown as ToolConstructable,
-            shortcut: 'CMD+SHIFT+E',
+          image: {
+            class: SimpleImage as unknown as ToolConstructable,
+            shortcut: 'CMD+SHIFT+I',
+          },
+          nestedChecklist: {
+            class: NestedChecklist as unknown as ToolConstructable,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+N',
           },
           paragraph: {
             class: Paragraph as unknown as ToolConstructable,
@@ -103,13 +141,19 @@ function Editor({ fileId, fileDetails }: { fileId: any, fileDetails: any }) {
             inlineToolbar: true,
             shortcut: 'CMD+SHIFT+Q',
           },
-          image: {
-            class: SimpleImage as unknown as ToolConstructable,
-            shortcut: 'CMD+SHIFT+I',
-          },
           raw: {
             class: RawTool as unknown as ToolConstructable,
             shortcut: 'CMD+SHIFT+R',
+          },
+          table: {
+            class: Table as unknown as ToolConstructable,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+T',
+          },
+          warning: {
+            class: Warning as unknown as ToolConstructable,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+W',
           },
         },
         onChange: () => {

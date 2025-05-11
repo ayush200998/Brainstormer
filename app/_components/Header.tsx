@@ -19,63 +19,68 @@ async function Header() {
   return (
     <header
         id='navbar-container'
-        className="bg-gray-950 border-b-2 border-slate-800"
+        className="bg-gray-950 border-b border-gray-800/50 backdrop-blur-sm sticky top-0 z-50"
     >
         <div className="mx-auto flex justify-between h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
             <Link
                 href='/'
+                className="flex items-center gap-2 group"
             >
-                <Image
-                    src='/assets/brainstormer_01.webp'
-                    alt='App Icon'
-                    width={40}
-                    height={40}
-                    className='rounded-full'
-                />
+                <div className="relative overflow-hidden rounded-full p-1 bg-gradient-to-tr from-blue-600 to-purple-600 transition-all duration-300 group-hover:shadow-md group-hover:shadow-purple-500/20">
+                    <Image
+                        src='/assets/brainstormer_01.webp'
+                        alt='App Icon'
+                        width={36}
+                        height={36}
+                        className='rounded-full'
+                    />
+                </div>
+                <span className="font-semibold text-white text-lg tracking-tight hidden sm:inline-block">
+                    Brainstormer
+                </span>
             </Link>
 
-            <div className="flex items-center justify-end md:justify-between">
-                <div className="flex items-center gap-4">
-                    <div className="sm:flex sm:gap-4">
-                        {isUserAuthenticated && user?.picture ? (
-                            <Button>
+            <div className="flex items-center">
+                <div className="flex items-center gap-3">
+                    {isUserAuthenticated && user?.picture ? (
+                        <div className="flex items-center gap-3">
+                            <div className="relative h-8 w-8 overflow-hidden rounded-full border border-gray-700">
+                                {user.picture && (
+                                    <Image
+                                        src={user.picture}
+                                        alt={user.given_name || 'User'}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                )}
+                            </div>
+                            <Button
+                                className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-lg shadow-purple-900/20"
+                            >
                                 <LogoutLink>
                                     Log out
                                 </LogoutLink>
                             </Button>
-                        ) : (
-                            <>
-                                <Button
-                                    variant='transparent'
-                                >
-                                    <LoginLink>
-                                        Login
-                                    </LoginLink>
-                                </Button>
-                                <Button>
-                                    <RegisterLink>
-                                        Register
-                                    </RegisterLink>
-                                </Button>
-                            </>
-                        )}
-                    </div>
-
-                    <button
-                    className="block rounded bg-gray-100 p-2.5 text-gray-600 transition hover:text-gray-600/75 md:hidden dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
-                    >
-                    <span className="sr-only">Toggle menu</span>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="size-5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                    >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                    </button>
+                        </div>
+                    ) : (
+                        <>
+                            <Button
+                                variant="ghost"
+                                className="text-gray-300 hover:text-white hover:bg-gray-800/60 rounded-full"
+                            >
+                                <LoginLink>
+                                    Login
+                                </LoginLink>
+                            </Button>
+                            <Button
+                                className="rounded-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 transition-all duration-300 shadow-sm shadow-purple-500/20"
+                            >
+                                <RegisterLink>
+                                    Register
+                                </RegisterLink>
+                            </Button>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
